@@ -17,7 +17,7 @@ try: input = raw_input
 except NameError: pass
 
 # Argument parse. Aimed to provide automatic deployment options
-interactive = True # Flag to select interactive install, typically prompting user to answer [y/n]
+interactive = False # Flag to select interactive install, typically prompting user to answer [y/n]
 parser = argparse.ArgumentParser(description='-y, optional non interactive install/uninstall with automatic \'yes\' selection. It must roon with root/admin privileges')
 parser.add_argument("-y", action='store_true')
 args = parser.parse_args()
@@ -147,7 +147,7 @@ if answer.lower() in ["yes", "y"]:
             if os.path.isdir("/var/artillery/"):
                 shutil.rmtree('/var/artillery')
             subprocess.Popen(
-                "git clone https://github.com/binarydefense/artillery /var/artillery/", shell=True).wait()
+                "git clone https://github.com/IndustryBestPractice/artillery /var/artillery/", shell=True).wait()
             print("[*] Finished. If you want to update Artillery go to /var/artillery and type 'git pull'")
         else:
             print("[*] Copying setup files over...")
